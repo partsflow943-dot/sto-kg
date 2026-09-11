@@ -3,400 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Версия сайта: 1.0.1 (Стартовый запуск) -->
     <title>Complex Auto — Сеть автоцентров и автозапчастей в Бишкеке | Программа Новый Сервис</title>
     <style>
-        /* БАЗОВЫЕ НАСТРОЙКИ И ШРИФТЫ */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        body { background-color: #FFFFFF; color: #1A1A1A; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+        .main-header { background-color: #E2231A; color: #FFFFFF; padding: 15px 0; border-bottom: 3px solid #B01810; }
+        .header-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo-block { display: flex; flex-direction: column; }
+        .logo-text { font-size: 28px; font-weight: 900; letter-spacing: 1px; line-height: 1; }
+        .logo-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; opacity: 0.9; }
+        .main-nav ul { display: flex; gap: 20px; list-style: none; }
+        .main-nav a { font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; }
+        .main-nav a:hover { color: #F2F2F2; }
+        .sub-nav-bar { background-color: #F2F2F2; border-bottom: 1px solid #E0E0E0; padding: 12px 0; }
+        .sub-nav-list { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; list-style: none; font-size: 13px; font-weight: 600; }
+        .sub-nav-list a { color: #4D4D4D; }
+        .sub-nav-list a:hover { color: #E2231A; }
+        .hero-section { background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('https://unsplash.com') center/cover no-repeat; color: #FFFFFF; padding: 80px 0; text-align: center; }
+        .hero-title { font-size: 38px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+        .hero-subtitle { font-size: 17px; margin-bottom: 30px; color: #F2F2F2; }
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 12px 24px; font-weight: 700; text-transform: uppercase; font-size: 13px; cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background-color: #E2231A; color: #FFFFFF; }
+        .btn-primary:hover { background-color: #B01810; }
+        .btn-secondary { background-color: transparent; border-color: #FFFFFF; color: #FFFFFF; }
+        .btn-secondary:hover { background-color: #FFFFFF; color: #1A1A1A; }
+        .section-padding { padding: 60px 0; }
+        .section-bg-gray { background-color: #F2F2F2; }
+        .section-title { font-size: 28px; text-transform: uppercase; font-weight: 800; margin-bottom: 25px; border-left: 5px solid #E2231A; padding-left: 15px; }
+        .section-desc { color: #666666; font-size: 15px; max-width: 800px; margin-bottom: 35px; }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .about-card { background: #FFFFFF; border: 1px solid #E0E0E0; padding: 20px; }
+        .about-card h3 { font-size: 16px; text-transform: uppercase; margin-bottom: 8px; color: #E2231A; }
+        .about-card p { color: #666666; font-size: 13px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .stat-item { background-color: #FFFFFF; padding: 25px; border: 1px solid #E0E0E0; }
+        .stat-num { font-size: 36px; font-weight: 900; color: #1A1A1A; margin-bottom: 5px; }
+        .stat-label { font-size: 12px; text-transform: uppercase; font-weight: 700; color: #666666; }
+        .brands-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+        .brand-item { background-color: #FFFFFF; border: 1px solid #E0E0E0; padding: 12px; text-align: center; font-weight: 700; color: #4D4D4D; font-size: 13px; }
+        .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .location-card { background-color: #FFFFFF; border: 1px solid #E0E0E0; display: flex; flex-direction: column; }
+        .location-img-placeholder { background-color: #4D4D4D; color: #FFFFFF; height: 140px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 3px solid #E2231A; }
+        .location-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .location-name { font-size: 18px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; }
+        .location-detail { font-size: 13px; margin-bottom: 8px; }
+        .location-detail strong { color: #666666; display: block; font-size: 11px; text-transform: uppercase; }
+        .location-phones { margin-top: auto; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn-phone { background-color: #E2231A; color: #FFFFFF; text-align: center; padding: 8px 5px; font-size: 12px; font-weight: 700; }
+        .btn-phone:hover { background-color: #B01810; }
+        .main-footer { background-color: #4D4D4D; color: #FFFFFF; padding: 40px 0 25px 0; font-size: 13px; }
+        .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid #666666; padding-bottom: 20px; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 10px; }
+        .social-link { background-color: #666666; padding: 6px 12px; font-size: 11px; text-transform: uppercase; font-weight: 600; }
+        .social-link:hover { background-color: #E2231A; }
+        .footer-cars { color: #CCCCCC; font-size: 11px; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-copy { color: #999999; font-size: 11px; }
+        @media (max-width: 768px) {
+            .header-grid, .sub-nav-list, .footer-top { flex-direction: column; text-align: center; }
+            .main-nav ul { justify-content: center; }
+            .hero-title { font-size: 26px; }
+            .locations-grid { grid-template-columns: 1fr; }
         }
+    </style>
+</head>
+<body>
 
-        body {
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-            line-height: 1.5;
-        }
+    <header class="main-header">
+        <div class="container header-grid">
+            <div class="logo-block">
+                <a href="#" class="logo-text">WWW.STO.KG</a>
+                <span class="logo-sub">автозапчасти и автосервисы в Бишкеке</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#parts">Автозапчасти</a></li>
+                    <li><a href="#services">Автосервисы</a></li>
+                    <li><a href="#about">О компании</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    <div class="sub-nav-bar">
+        <div class="container">
+            <ul class="sub-nav-list">
+                <li><a href="#locations">Посмотреть точки продаж</a></li>
+                <li><a href="#">On-Line Каталоги</a></li>
+                <li><a href="#about">О компании / Вакансии</a></li>
+                <li><a href="#">Оптовым клиентам</a></li>
+            </ul>
+        </div>
+    </div>
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Сеть автоцентров и запчастей в Бишкеке</h1>
+            <p class="hero-subtitle">Программа «Новый Сервис» от Complex Auto. Обслуживание по единым стандартам.</p>
+            <div class="hero-buttons">
+                <a href="#locations" class="btn btn-primary">Автосервисы</a>
+                <a href="#parts" class="btn btn-primary">Автозапчасти</a>
+                <a href="tel:0555530455" class="btn btn-secondary">Написать директору</a>
+            </div>
+        </div>
+    </section>
 
-        ul {
-            list-style: none;
-        }
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">О компании</h2>
+            <p class="section-desc">С 1997 года Complex Auto объединяет крупные автоцентры, СТО и магазины запчастей в Бишкеке в единую сеть «магазин + СТО».</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Единые цены</h3>
+                    <p>Прозрачная фиксированная стоимость на детали и ремонтные работы.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Сертифицированные мастера</h3>
+                    <p>Специалисты проходят регулярную аттестацию заводов-изготовителей.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Прямые контракты</h3>
+                    <p>Прямые поставки от ведущих мировых производителей автокомпонентов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        /* ШАПКА (КРАСНАЯ ПЛАШКА) */
-        .main-header {
-            background-color: #E2231A;
-            color: #FFFFFF;
-            padding: 15px 0;
-            border-bottom: 3px solid #B01810;
-        }
+    <section class="section-padding section-bg-gray">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Брендов</div></div>
+                <div class="stat-item"><div class="stat-num">40</div><div class="stat-label">Поставщиков</div></div>
+                <div class="stat-item"><div class="stat-num">50 000</div><div class="stat-label">Запчастей в наличии</div></div>
+                <div class="stat-item"><div class="stat-num">1997</div><div class="stat-label">Год основания</div></div>
+            </div>
+        </div>
+    </section>
 
-        .header-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo-block {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            line-height: 1;
-        }
-
-        .logo-sub {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-            opacity: 0.9;
-        }
-
-        .main-nav ul {
-            display: flex;
-            gap: 25px;
-        }
-
-        .main-nav a {
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
-        }
-
-        .main-nav a:hover {
-            border-bottom-color: #FFFFFF;
-        }
-
-        /* ПОДМЕНЮ */
-        .sub-nav-bar {
-            background-color: #F2F2F2;
-            border-bottom: 1px solid #E0E0E0;
-            padding: 12px 0;
-        }
-
-        .sub-nav-list {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .sub-nav-list a {
-            font-size: 13px;
-            font-weight: 600;
-            color: #4D4D4D;
-        }
-
-        .sub-nav-list a:hover {
-            color: #E2231A;
-        }
-
-        /* ОБЛОЖКА (БАННЕР) */
-        .hero-section {
-            background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('https://unsplash.com') center/cover no-repeat;
-            color: #FFFFFF;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 42px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            color: #F2F2F2;
-            max-width: 700px;
-            margin: 0 auto 35px auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background-color: #E2231A;
-            color: #FFFFFF;
-        }
-
-        .btn-primary:hover {
-            background-color: #B01810;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border-color: #FFFFFF;
-            color: #FFFFFF;
-        }
-
-        .btn-secondary:hover {
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-        }
-
-        /* СЕКЦИИ ОБЩИЕ */
-        .section-padding {
-            padding: 70px 0;
-        }
-
-        .section-bg-gray {
-            background-color: #F2F2F2;
-        }
-
-        .section-title {
-            font-size: 32px;
-            text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 15px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: #E2231A;
-        }
-
-        .section-desc {
-            color: #666666;
-            font-size: 16px;
-            max-width: 800px;
-            margin-bottom: 40px;
-        }
-
-        /* О КОМПАНИИ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .about-card {
-            background: #FFFFFF;
-            border-left: 4px solid #E2231A;
-            padding: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .about-card h3 {
-            font-size: 18px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            color: #1A1A1A;
-        }
-
-        .about-card p {
-            color: #666666;
-            font-size: 14px;
-        }
-
-        /* ЦИФРЫ */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        .stat-item {
-            background-color: #FFFFFF;
-            padding: 30px 20px;
-            border: 1px solid #E0E0E0;
-        }
-
-        .stat-num {
-            font-size: 40px;
-            font-weight: 900;
-            color: #E2231A;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #4D4D4D;
-            letter-spacing: 0.5px;
-        }
-
-        /* БРЕНДЫ */
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 15px;
-        }
-
-        .brand-item {
-            background-color: #F2F2F2;
-            border: 1px solid #E0E0E0;
-            padding: 15px;
-            text-align: center;
-            font-weight: 700;
-            color: #4D4D4D;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        /* ТОЧКИ ПРОДАЖ */
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .location-card {
-            background-color: #FFFFFF;
-            border: 1px solid #E0E0E0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .location-img-placeholder {
-            background-color: #4D4D4D;
-            color: #FFFFFF;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-            background-image: repeating-linear-gradient(45deg, #3d3d3d, #3d3d3d 10px, #4d4d4d 10px, #4d4d4d 20px);
-        }
-
-        .location-info {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .location-name {
-            font-size: 20px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #F2F2F2;
-            padding-bottom: 10px;
-        }
-
-        .location-detail {
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: #1A1A1A;
-        }
-
-        .location-detail strong {
-            color: #666666;
-            display: block;
-            font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .location-phones {
-            margin-top: auto;
-            padding-top: 15px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .btn-phone {
-            background-color: #E2231A;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 10px 5px;
-            font-size: 13px;
-            font-weight: 700;
-            border-bottom: 2px solid #B01810;
-        }
-
-        .btn-phone:hover {
-            background-color: #B01810;
-        }
-
-        /* ФУТЕР */
-        .main-footer {
-            background-color: #4D4D4D;
-            color: #FFFFFF;
-            padding: 50px 0 30px 0;
-            font-size: 14px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            border-bottom: 1px solid #666666;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            backgroundbackground-color: #E2231A;}.footer-cars {color: #CCCCCC;font-size: 12px;line-height: 1.8;margin-bottom: 25px;text-transform: uppercase;letter-spacing: 0.5px;}.footer-copy {color: #999999;font-size: 12px;}/* АДАПТИВНОСТЬ */@media (max-width: 768px) {.header-grid {flex-direction: column;text-align: center;}.sub-nav-list {justify-content: center;text-align: center;}.hero-title {font-size: 28px;}.section-title {font-size: 26px;}.locations-grid {grid-template-columns: 1fr;}.footer-top {flex-direction: column;text-align: center;}}WWW.STO.KGавтозапчасти и автосервисы в БишкекеАвтозапчастиАвтосервисыО компанииПосмотреть точки продажOn-Line КаталогиО компании / Вакансии / Доставка / КонтактыКорпоративным / Оптовым клиентамWWW.STO.KGОдноклассникиInstagramFacebookTwitterВКонтактеYouTubeОбслуживаем: BMW, Audi, VW, Mercedes, Toyota, Nissan, Honda, Mazda, Subaru, Lexus, Mitsubishi и другие марки.© Complex Auto 1997–2026. Программа «Новый Сервис». Все права защищены. Разработано в соответствии с гайдлайнами автоиндустрии.olor: #666666;
-            color: #FFFFFF;
-            padding: 8px 15px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .social-link:hover {
+    <section id="parts" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Официальные бренды</h2>
+            <div class="brands-grid">
