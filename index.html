@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Auto — Сеть автоцентров и автозапчастей в Бишкеке | Программа Новый Сервис</title>
+    <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ И ШРИФТЫ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ШАПКА (КРАСНАЯ ПЛАШКА) */
+        .main-header {
+            background-color: #E2231A;
+            color: #FFFFFF;
+            padding: 15px 0;
+            border-bottom: 3px solid #B01810;
+        }
+
+        .header-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .main-nav a:hover {
+            border-bottom-color: #FFFFFF;
+        }
+
+        /* ПОДМЕНЮ */
+        .sub-nav-bar {
+            background-color: #F2F2F2;
+            border-bottom: 1px solid #E0E0E0;
+            padding: 12px 0;
+        }
+
+        .sub-nav-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .sub-nav-list a {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4D4D4D;
+        }
+
+        .sub-nav-list a:hover {
+            color: #E2231A;
+        }
+
+        /* ОБЛОЖКА (БАННЕР) */
+        .hero-section {
+            background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('https://unsplash.com') center/cover no-repeat;
+            color: #FFFFFF;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #F2F2F2;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #E2231A;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: #B01810;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+        }
+
+        /* СЕКЦИИ ОБЩИЕ */
+        .section-padding {
+            padding: 70px 0;
+        }
+
+        .section-bg-gray {
+            background-color: #F2F2F2;
+        }
+
+        .section-title {
+            font-size: 32px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #E2231A;
+        }
+
+        .section-desc {
+            color: #666666;
+            font-size: 16px;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        /* О КОМПАНИИ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .about-card {
+            background: #FFFFFF;
+            border-left: 4px solid #E2231A;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .about-card h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #1A1A1A;
+        }
+
+        .about-card p {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* ЦИФРЫ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background-color: #FFFFFF;
+            padding: 30px 20px;
+            border: 1px solid #E0E0E0;
+        }
+
+        .stat-num {
+            font-size: 40px;
+            font-weight: 900;
+            color: #E2231A;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #4D4D4D;
+            letter-spacing: 0.5px;
+        }
+
+        /* БРЕНДЫ */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .brand-item {
+            background-color: #F2F2F2;
+            border: 1px solid #E0E0E0;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            color: #4D4D4D;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* ТОЧКИ ПРОДАЖ */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .location-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location-img-placeholder {
+            background-color: #4D4D4D;
+            color: #FFFFFF;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background-image: repeating-linear-gradient(45deg, #3d3d3d, #3d3d3d 10px, #4d4d4d 10px, #4d4d4d 20px);
+        }
+
+        .location-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location-name {
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #F2F2F2;
+            padding-bottom: 10px;
+        }
+
+        .location-detail {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #1A1A1A;
+        }
+
+        .location-detail strong {
+            color: #666666;
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .location-phones {
+            margin-top: auto;
+            padding-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-phone {
+            background-color: #E2231A;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px 5px;
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 2px solid #B01810;
+        }
+
+        .btn-phone:hover {
+            background-color: #B01810;
+        }
+
+        /* ФУТЕР */
+        .main-footer {
+            background-color: #4D4D4D;
+            color: #FFFFFF;
+            padding: 50px 0 30px 0;
+            font-size: 14px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            border-bottom: 1px solid #666666;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            backgroundbackground-color: #E2231A;}.footer-cars {color: #CCCCCC;font-size: 12px;line-height: 1.8;margin-bottom: 25px;text-transform: uppercase;letter-spacing: 0.5px;}.footer-copy {color: #999999;font-size: 12px;}/* АДАПТИВНОСТЬ */@media (max-width: 768px) {.header-grid {flex-direction: column;text-align: center;}.sub-nav-list {justify-content: center;text-align: center;}.hero-title {font-size: 28px;}.section-title {font-size: 26px;}.locations-grid {grid-template-columns: 1fr;}.footer-top {flex-direction: column;text-align: center;}}WWW.STO.KGавтозапчасти и автосервисы в БишкекеАвтозапчастиАвтосервисыО компанииПосмотреть точки продажOn-Line КаталогиО компании / Вакансии / Доставка / КонтактыКорпоративным / Оптовым клиентамWWW.STO.KGОдноклассникиInstagramFacebookTwitterВКонтактеYouTubeОбслуживаем: BMW, Audi, VW, Mercedes, Toyota, Nissan, Honda, Mazda, Subaru, Lexus, Mitsubishi и другие марки.© Complex Auto 1997–2026. Программа «Новый Сервис». Все права защищены. Разработано в соответствии с гайдлайнами автоиндустрии.olor: #666666;
+            color: #FFFFFF;
+            padding: 8px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .social-link:hover {
