@@ -1,0 +1,20 @@
+name: AI Auto Sync
+on:
+  repository_dispatch:
+    types: [update_site]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Update HTML
+        run: |
+          echo "${{ github.event.client_payload.code }}" > index.html
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "AI-Assistant"
+          git config --global user.email "ai@sto.kg"
+          git add index.html
+          git commit -m "Автоматическое обновление дизайна сайта из ИИ"
+          git push
